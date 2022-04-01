@@ -114,7 +114,7 @@ def load_linear_maps():
     return MAPPINGS
 
 
-@st.cache(allow_output_mutation=True)
+@st.experimental_singleton
 def load_transformer_model_and_tokenizer(model_name_or_path=MODEL_NAME):
     global tokenizer
     global model
@@ -123,7 +123,7 @@ def load_transformer_model_and_tokenizer(model_name_or_path=MODEL_NAME):
     return model, tokenizer
 
 
-@st.cache(allow_output_mutation=True)
+@st.experimental_memo
 def get_sentence_embeddings(data):
     """
     data -> list: list of text 
@@ -165,7 +165,7 @@ def bar_chart(df):
     )
     st.plotly_chart(fig)
 
-
+    
 def plot_umap(umap_embeddings, dataset, example_idx=None, predictions=None):
     num_categories = len(dataset.categories)
     examples = umap_embeddings[:-num_categories]
@@ -218,6 +218,7 @@ def plot_umap(umap_embeddings, dataset, example_idx=None, predictions=None):
     plt.axis("off")
 
     st.pyplot(fig=fig)
+    
 
 EXAMPLES, title_to_idx, dataset = load_examples("agnews")
 LABELS = dataset.categories
