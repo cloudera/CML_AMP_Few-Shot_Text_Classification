@@ -15,7 +15,7 @@ seaborn==0.11.2
 streamlit==1.8.1
 torch==1.11.0
 tqdm==4.63.1
-transformers=4.17.0
+transformers==4.17.0
 -e . # installs local fewshot module in "edit" mode
 
 
