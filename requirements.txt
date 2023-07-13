@@ -1,3 +1,4 @@
+altair<5 #need to pin altair version when using steamlit<1.23.0
 attrs==21.4.0
 black==22.3.0
 datasets==2.0.0
